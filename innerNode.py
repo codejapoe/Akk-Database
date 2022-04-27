@@ -1,3 +1,5 @@
+import json
+
 class childNode:
     def __init__(self, _id, data):
         self._id = _id
@@ -31,8 +33,17 @@ def inorder(node):
 
 if __name__ == "__main__":
     root = None
+
     while True:
         _id:str = input("ID: ")
-        data = input("Data: ")
+
+        try:
+            data = input("Data: ")
+            data = json.loads(data)
+
+        except:
+            print("Accept only Dictionary")
+            continue
+
         root = insert(root, _id, data)
         inorder(root)
